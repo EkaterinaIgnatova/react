@@ -1,0 +1,33 @@
+h2 {
+    text-align: center;
+}
+
+ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.dishesList {
+    display: flex;
+    flex-direction: column;
+
+    .dishItem {
+        padding: 8px;
+        border-bottom: 1px solid #cfcfcf;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.reviewsList {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .reviewItem{
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #cfcfcf;
+        width: 30%;
+    }
+}
