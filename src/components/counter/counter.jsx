@@ -1,9 +1,9 @@
 import { useCounter } from "./use-counter";
 import "./counter.css";
 
-export const Counter = ({countIsChanged}) => {
+export const Counter = ({onCountChange}) => {
 
-    const {count, increaseCount, decreaseCount} = useCounter(countIsChanged);
+    const {count, increaseCount, decreaseCount} = useCounter(onCountChange);
 
     return (
         <div className="counter">

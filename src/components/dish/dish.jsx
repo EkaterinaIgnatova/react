@@ -13,7 +13,7 @@ export const Dish = ({dishInfo}) => {
         <>
             <span>{dishInfo.name} ({dishInfo.ingredients.join(', ')})</span>
             <div>
-                <Counter countIsChanged={changePrice}/>
+                <Counter onCountChange={changePrice}/>
                 <b>{price + '$'}</b>
             </div>
         </>
