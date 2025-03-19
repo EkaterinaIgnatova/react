@@ -9,12 +9,12 @@ h1 {
 
     .content {
         flex-grow: 1;
-        padding: 0 8px;
+        padding: 16px 8px;
     }
 }
 
 footer {
-    background-color: #ececec;
+    border-top: 1px solid #cfcfcf;
     text-align: end;
     padding: 16px;
 }
