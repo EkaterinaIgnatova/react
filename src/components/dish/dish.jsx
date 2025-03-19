@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Counter } from "../counter/counter"
+import { DishCounter } from "../dishCounter/dishCounter"
+import "./dish.css";
 
 export const Dish = ({dishInfo}) => {
 
@@ -12,8 +13,8 @@ export const Dish = ({dishInfo}) => {
     return (
         <>
             <span>{dishInfo.name} ({dishInfo.ingredients.join(', ')})</span>
-            <div>
-                <Counter onCountChange={changePrice}/>
+            <div className="price">
+                <DishCounter onCountChange={changePrice}/>
                 <b>{price + '$'}</b>
             </div>
         </>

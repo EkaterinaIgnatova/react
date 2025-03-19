@@ -1,5 +1,6 @@
 import { Dish } from "../dish/dish";
 import { Review } from "../review/review";
+import { ReviewForm } from "../reviewForm/reviewForm";
 import "./restaurant.css";
 
 export const Restaurant = ({restaurantInfo}) => {
@@ -16,7 +17,7 @@ export const Restaurant = ({restaurantInfo}) => {
                     ))}
                 </ul>
             ) : (
-                <span>Menu is empty</span>
+                <p>Menu is empty</p>
             )}
             <h3>Reviews</h3>
             {restaurantInfo.reviews?.length ? (
@@ -28,8 +29,10 @@ export const Restaurant = ({restaurantInfo}) => {
                     ))}
                 </ul>
             ) : (
-                <span>No reviews</span>
+                <p>No reviews</p>
             )}
+            <h3>Leave feedback</h3>
+            <ReviewForm></ReviewForm>
         </div>
     )
 }
