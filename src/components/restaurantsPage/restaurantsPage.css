@@ -1,26 +1,26 @@
 .tabs-panel {
-    border-bottom: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
 
-    .tab {
-        padding: 8px 16px;
-        border-radius: 8px 8px 0 0;
-        margin-right: 1px;
-        border: none;
-        background-color: transparent;
-        
-        &:hover {
-            background-color: #ececec;
-            cursor: pointer;
-        }
+  .tab {
+    padding: 8px 16px;
+    border-radius: 8px 8px 0 0;
+    margin-right: 1px;
+    border: none;
+    background-color: transparent;
 
-        &.active-tab {
-            background-color: #ececec;
-            font-weight: 600;
-        }
-        
-        &:hover {
-            background-color: #ececec;
-            cursor: pointer;
-        }
+    &:hover {
+      background-color: #ececec;
+      cursor: pointer;
     }
+
+    &.active-tab {
+      background-color: #ececec;
+      font-weight: 600;
+    }
+
+    &:hover {
+      background-color: #ececec;
+      cursor: pointer;
+    }
+  }
 }

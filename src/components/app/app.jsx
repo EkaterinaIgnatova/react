@@ -3,9 +3,9 @@ import { restaurants } from "../../assets/mock";
 import { RestaurantsPage } from "../restaurantsPage/restaurantsPage";
 
 export const App = () => {
-    return (
-      <Layout>
-          <RestaurantsPage restaurantsList={restaurants}/>
-      </Layout>
-    )
-}
+  return (
+    <Layout>
+      <RestaurantsPage restaurantsList={restaurants} />
+    </Layout>
+  );
+};
