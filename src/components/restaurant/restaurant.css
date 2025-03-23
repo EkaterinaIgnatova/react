@@ -1,0 +1,37 @@
+h2 {
+    text-align: center;
+}
+
+ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.restaurant {
+    padding: 0 8px;
+
+    .dishes-list {
+        display: flex;
+        flex-direction: column;
+    
+        .dish-item {
+            padding: 8px;
+            border-bottom: 1px solid #cfcfcf;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    
+    .reviews-list {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+    
+        .review-item{
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #cfcfcf;
+            width: 30%;
+        }
+    }
+}
