@@ -1,0 +1,41 @@
+input,
+textarea {
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid #cfcfcf;
+  width: 100%;
+}
+
+.form {
+  width: 50%;
+  margin: auto;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #cfcfcf;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .form-row {
+    display: flex;
+    gap: 16px;
+  }
+
+  .text-control {
+    display: flex;
+    gap: 8px;
+    flex-grow: 1;
+  }
+
+  .form-button {
+    border-radius: 4px;
+    padding: 8px 16px;
+    border: none;
+    background-color: #ececec;
+
+    &:hover {
+      background-color: #cfcfcf;
+      cursor: pointer;
+    }
+  }
+}

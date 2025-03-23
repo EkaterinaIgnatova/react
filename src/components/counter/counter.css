@@ -1,18 +1,17 @@
 .counter {
-    display: inline-block;
-    margin-right: 16px;
+  display: inline-block;
 
-    button {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        margin: 0 4px;
-        border: none;
-        background-color: transparent;
-        
-        &:hover {
-            background-color: #ececec;
-            cursor: pointer;
-        }
+  button {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin: 0 4px;
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+      background-color: #ececec;
+      cursor: pointer;
     }
+  }
 }
