@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import "./progressBar.css";
 
-export const ProgressBar = ({ ref }) => {
+export const ProgressBar = ({ layoutRef }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const onScroll = () => {
-      const heightDif = ref.current.scrollHeight - ref.current.clientHeight;
-      const scrollTop = ref.current.getBoundingClientRect().top;
+      const heightDif =
+        layoutRef.current.scrollHeight - layoutRef.current.clientHeight;
+      const scrollTop = layoutRef.current.getBoundingClientRect().top;
       setProgress(Math.round((scrollTop * -100) / heightDif));
     };
 
@@ -18,5 +19,5 @@ export const ProgressBar = ({ ref }) => {
     };
   }, []);
 
-  return <div className="progress-bar" style={{ width: progress + "%" }}></div>;
+  return <div className="progress-bar" style={{ width: progress + "%" }} />;
 };

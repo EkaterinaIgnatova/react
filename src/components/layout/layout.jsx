@@ -7,7 +7,7 @@ export const Layout = ({ children }) => {
 
   return (
     <div className="layout" ref={layoutRef}>
-      <ProgressBar ref={layoutRef} />
+      <ProgressBar layoutRef={layoutRef} />
       <header>
         <h1>Restourants</h1>
       </header>
