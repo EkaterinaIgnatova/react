@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./progressBar.css";
+import styles from "./progressBar.module.css";
 
 export const ProgressBar = ({ layoutRef }) => {
   const [progress, setProgress] = useState(0);
@@ -19,5 +19,5 @@ export const ProgressBar = ({ layoutRef }) => {
     };
   }, []);
 
-  return <div className="progress-bar" style={{ width: progress + "%" }} />;
+  return <div className={styles.root} style={{ width: progress + "%" }} />;
 };

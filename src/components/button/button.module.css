@@ -1,0 +1,11 @@
+.root {
+  border-radius: 4px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #ececec;
+
+  &:hover {
+    background-color: #cfcfcf;
+    cursor: pointer;
+  }
+}

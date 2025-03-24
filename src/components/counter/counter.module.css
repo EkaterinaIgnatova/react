@@ -1,11 +1,12 @@
-.counter {
-  display: inline-block;
+.root {
+  display: flex;
+  gap: 4px;
+  align-items: center;
 
-  button {
+  .button {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    margin: 0 4px;
     border: none;
     background-color: transparent;
 

@@ -1,11 +1,15 @@
-import "./counter.css";
+import styles from "./counter.module.css";
 
 export const Counter = ({ count, decreaseCount, increaseCount }) => {
   return (
-    <div className="counter">
-      <button onClick={decreaseCount}>-</button>
+    <div className={styles.root}>
+      <button className={styles.button} onClick={decreaseCount}>
+        -
+      </button>
       <span>{count}</span>
-      <button onClick={increaseCount}>+</button>
+      <button className={styles.button} onClick={increaseCount}>
+        +
+      </button>
     </div>
   );
 };

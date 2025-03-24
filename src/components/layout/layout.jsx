@@ -1,18 +1,18 @@
 import { useRef } from "react";
 import { ProgressBar } from "../progressBar/progressBar";
-import "./layout.css";
+import styles from "./layout.module.css";
 
 export const Layout = ({ children }) => {
   const layoutRef = useRef(null);
 
   return (
-    <div className="layout" ref={layoutRef}>
+    <div className={styles.root} ref={layoutRef}>
       <ProgressBar layoutRef={layoutRef} />
-      <header>
+      <header className={styles.header}>
         <h1>Restourants</h1>
       </header>
-      <div className="content">{children}</div>
-      <footer>
+      <div className={styles.content}>{children}</div>
+      <footer className={styles.footer}>
         <span>best-rest@gmail.com</span>
       </footer>
     </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Restaurant } from "../restaurant/restaurant";
-import "./restaurantsPage.css";
+import { Tab } from "../tab/tab";
+import styles from "./restaurantsPage.module.css";
 
 export const RestaurantsPage = ({ restaurantsList }) => {
   const [selectedRestaurant, selectRestaurant] = useState(
@@ -13,14 +14,13 @@ export const RestaurantsPage = ({ restaurantsList }) => {
 
   return (
     <>
-      <div className="tabs-panel">
+      <div className={styles.tabsPanel}>
         {restaurantsList.map(({ id, name }) => (
-          <button
-            className={selectedRestaurant === id ? "tab active-tab" : "tab"}
+          <Tab
+            name={name}
+            isActive={selectedRestaurant === id}
             onClick={() => selectRestaurant(id)}
-          >
-            {name}
-          </button>
+          ></Tab>
         ))}
       </div>
       <Restaurant restaurantInfo={restaurantInfo} />
