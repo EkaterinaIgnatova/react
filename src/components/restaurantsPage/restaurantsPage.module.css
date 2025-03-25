@@ -1,5 +1,4 @@
 .tabsPanel {
-  border-bottom: 1px solid #ececec;
   display: flex;
   gap: 4px;
 }
