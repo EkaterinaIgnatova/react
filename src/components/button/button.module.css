@@ -3,26 +3,23 @@
   padding: 8px 16px;
   align-items: center;
   border: none;
+  background-color: #ececec;
+  color: #000000;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #cfcfcf;
+  }
+
+  &.active {
+    background-color: #cfcfcf;
+  }
 
   &.rounded {
     border-radius: 50%;
     width: 30px;
     height: 30px;
     padding: 8px;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &.light {
-    background-color: #ececec;
-    color: #000000;
-
-    &:hover,
-    &.active {
-      background-color: #cfcfcf;
-    }
   }
 
   &.dark {

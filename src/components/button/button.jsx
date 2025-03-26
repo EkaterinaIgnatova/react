@@ -9,7 +9,6 @@ export const Button = ({ label, onClick, rounded = false, active = false }) => {
   return (
     <button
       className={classNames(styles.root, {
-        [styles.light]: theme === "light",
         [styles.dark]: theme === "dark",
         [styles.rounded]: rounded,
         [styles.active]: active,

@@ -140,3 +140,7 @@ export const restaurants = [
     ],
   },
 ];
+
+export const user = {
+  name: "Ivan",
+};

@@ -1,6 +1,5 @@
 .root {
   display: flex;
   gap: 8px;
-  flex-grow: 1;
   align-items: center;
 }

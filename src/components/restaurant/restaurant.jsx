@@ -31,7 +31,6 @@ export const Restaurant = ({ restaurantInfo }) => {
       ) : (
         <p>No reviews</p>
       )}
-      <h3>Leave feedback</h3>
       <ReviewForm className={styles.reviewForm} />
     </div>
   );
