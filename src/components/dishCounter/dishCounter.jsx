@@ -8,13 +8,15 @@ export const DishCounter = ({ onCountChange }) => {
 
   const { user } = use(AuthContext);
 
+  if (!user) {
+    return null;
+  }
+
   return (
-    user && (
-      <Counter
-        count={count}
-        increaseCount={increaseCount}
-        decreaseCount={decreaseCount}
-      ></Counter>
-    )
+    <Counter
+      count={count}
+      increaseCount={increaseCount}
+      decreaseCount={decreaseCount}
+    />
   );
 };

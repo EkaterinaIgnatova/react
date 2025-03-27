@@ -5,12 +5,14 @@ import styles from "./account.module.css";
 export const Account = () => {
   const { user } = use(AuthContext);
 
+  if (!user) {
+    return null;
+  }
+
   return (
-    user && (
-      <div className={styles.root}>
-        <i className="fa-solid fa-user"></i>
-        <span>{user.name}</span>
-      </div>
-    )
+    <div className={styles.root}>
+      <i className="fa-solid fa-user"></i>
+      <span>{user.name}</span>
+    </div>
   );
 };

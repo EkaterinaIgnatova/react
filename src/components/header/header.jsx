@@ -8,10 +8,10 @@ export const Header = () => {
     <div className={styles.root}>
       <h1>Restourants</h1>
       <div className={styles.menu}>
-        <Account></Account>
+        <Account />
         <div className={styles.actions}>
-          <ToggleAuth></ToggleAuth>
-          <ToggleTheme></ToggleTheme>
+          <ToggleAuth />
+          <ToggleTheme />
         </div>
       </div>
     </div>

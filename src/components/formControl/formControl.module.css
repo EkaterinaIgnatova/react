@@ -4,3 +4,11 @@
   flex-grow: 1;
   align-items: center;
 }
+
+input,
+textarea {
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid #cfcfcf;
+  width: 100%;
+}
