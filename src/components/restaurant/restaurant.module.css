@@ -1,20 +1,15 @@
-h2 {
-  text-align: center;
-}
-
-ul {
-  padding-left: 0;
-  list-style: none;
-}
-
-.restaurant {
+.root {
   padding: 0 8px;
 
-  .dishes-list {
+  .name {
+    text-align: center;
+  }
+
+  .dishesList {
     display: flex;
     flex-direction: column;
 
-    .dish-item {
+    .dishItem {
       padding: 8px;
       border-bottom: 1px solid #cfcfcf;
       display: flex;
@@ -22,16 +17,20 @@ ul {
     }
   }
 
-  .reviews-list {
+  .reviewsList {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
 
-    .review-item {
+    .reviewItem {
       padding: 8px;
       border-radius: 8px;
       border: 1px solid #cfcfcf;
       width: 30%;
     }
+  }
+
+  .reviewForm {
+    margin: auto;
   }
 }

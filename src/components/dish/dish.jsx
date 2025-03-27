@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DishCounter } from "../dishCounter/dishCounter";
-import "./dish.css";
+import styles from "./dish.module.css";
 
 export const Dish = ({ dishInfo }) => {
   const [price, setPrice] = useState(0);
@@ -14,7 +14,7 @@ export const Dish = ({ dishInfo }) => {
       <span>
         {dishInfo.name} ({dishInfo.ingredients.join(", ")})
       </span>
-      <div className="price">
+      <div className={styles.price}>
         <DishCounter onCountChange={changePrice} />
         <b>{price + "$"}</b>
       </div>

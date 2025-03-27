@@ -1,17 +1,17 @@
 import { Dish } from "../dish/dish";
 import { Review } from "../review/review";
 import { ReviewForm } from "../reviewForm/reviewForm";
-import "./restaurant.css";
+import styles from "./restaurant.module.css";
 
 export const Restaurant = ({ restaurantInfo }) => {
   return (
-    <div className="restaurant">
-      <h2>{restaurantInfo.name}</h2>
+    <div className={styles.root}>
+      <h2 className={styles.name}>{restaurantInfo.name}</h2>
       <h3>Menu</h3>
       {restaurantInfo.menu?.length ? (
-        <ul className="dishes-list">
+        <ul className={styles.dishesList}>
           {restaurantInfo.menu.map((dish) => (
-            <li className="dish-item" key={dish.id}>
+            <li className={styles.dishItem} key={dish.id}>
               <Dish dishInfo={dish} />
             </li>
           ))}
@@ -21,9 +21,9 @@ export const Restaurant = ({ restaurantInfo }) => {
       )}
       <h3>Reviews</h3>
       {restaurantInfo.reviews?.length ? (
-        <ul className="reviews-list">
+        <ul className={styles.reviewsList}>
           {restaurantInfo.reviews.map((review) => (
-            <li className="review-item" key={review.id}>
+            <li className={styles.reviewItem} key={review.id}>
               <Review reviewInfo={review} />
             </li>
           ))}
@@ -31,8 +31,7 @@ export const Restaurant = ({ restaurantInfo }) => {
       ) : (
         <p>No reviews</p>
       )}
-      <h3>Leave feedback</h3>
-      <ReviewForm />
+      <ReviewForm className={styles.reviewForm} />
     </div>
   );
 };
