@@ -3,9 +3,8 @@ import { Counter } from "../counter/counter";
 import { useCounter } from "../counter/useCounter";
 import { AuthContext } from "../authContext/authContext";
 
-export const DishCounter = ({ onCountChange }) => {
-  const { count, increaseCount, decreaseCount } = useCounter(onCountChange);
-
+export const DishCounter = ({ onCountChange, id }) => {
+  const { count, increaseCount, decreaseCount } = useCounter(onCountChange, id);
   const { user } = use(AuthContext);
 
   if (!user) {

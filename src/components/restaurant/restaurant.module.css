@@ -1,36 +1,33 @@
-.root {
-  padding: 0 8px;
+.name {
+  text-align: center;
+}
 
-  .name {
-    text-align: center;
-  }
+.dishesList {
+  display: flex;
+  flex-direction: column;
 
-  .dishesList {
+  .dishItem {
+    padding: 8px;
+    border-bottom: 1px solid #cfcfcf;
     display: flex;
-    flex-direction: column;
-
-    .dishItem {
-      padding: 8px;
-      border-bottom: 1px solid #cfcfcf;
-      display: flex;
-      justify-content: space-between;
-    }
+    justify-content: space-between;
+    align-items: center;
   }
+}
 
-  .reviewsList {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
+.reviewsList {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
 
-    .reviewItem {
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid #cfcfcf;
-      width: 30%;
-    }
+  .reviewItem {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #cfcfcf;
+    width: 30%;
   }
+}
 
-  .reviewForm {
-    margin: auto;
-  }
+.reviewForm {
+  margin: auto;
 }

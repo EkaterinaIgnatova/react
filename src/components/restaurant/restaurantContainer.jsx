@@ -1,15 +1,13 @@
 import { useSelector } from "react-redux";
-import { Button } from "../button/button";
+import { Restaurant } from "./restaurant";
 import { getRestaurantById } from "../redux/entities/restaurant/slice";
 
-export const Tab = ({ id, isActive, onClick }) => {
+export const RestaurantContainer = ({ id }) => {
   const restaurantInfo = useSelector((state) => getRestaurantById(state, id));
 
   if (!restaurantInfo) {
     return null;
   }
 
-  return (
-    <Button label={restaurantInfo.name} onClick={onClick} active={isActive} />
-  );
+  return <Restaurant restaurantInfo={restaurantInfo} />;
 };
