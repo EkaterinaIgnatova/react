@@ -1,8 +1,4 @@
-h1 {
-  text-align: center;
-}
-
-.layout {
+.root {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -11,10 +7,10 @@ h1 {
     flex-grow: 1;
     padding: 16px 8px;
   }
-}
 
-footer {
-  border-top: 1px solid #cfcfcf;
-  text-align: end;
-  padding: 16px;
+  .footer {
+    border-top: 1px solid #cfcfcf;
+    text-align: end;
+    padding: 16px;
+  }
 }

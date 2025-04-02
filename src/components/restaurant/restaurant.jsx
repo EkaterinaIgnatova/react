@@ -1,18 +1,18 @@
-import { Dish } from "../dish/dish";
-import { Review } from "../review/review";
+import { DishContainer } from "../dish/dishContainer";
+import { ReviewContainer } from "../review/reviewContainer";
 import { ReviewForm } from "../reviewForm/reviewForm";
-import "./restaurant.css";
+import styles from "./restaurant.module.css";
 
 export const Restaurant = ({ restaurantInfo }) => {
   return (
-    <div className="restaurant">
-      <h2>{restaurantInfo.name}</h2>
+    <div>
+      <h2 className={styles.name}>{restaurantInfo.name}</h2>
       <h3>Menu</h3>
       {restaurantInfo.menu?.length ? (
-        <ul className="dishes-list">
-          {restaurantInfo.menu.map((dish) => (
-            <li className="dish-item" key={dish.id}>
-              <Dish dishInfo={dish} />
+        <ul className={styles.dishesList}>
+          {restaurantInfo.menu.map((id) => (
+            <li className={styles.dishItem} key={id}>
+              <DishContainer id={id} />
             </li>
           ))}
         </ul>
@@ -21,18 +21,17 @@ export const Restaurant = ({ restaurantInfo }) => {
       )}
       <h3>Reviews</h3>
       {restaurantInfo.reviews?.length ? (
-        <ul className="reviews-list">
-          {restaurantInfo.reviews.map((review) => (
-            <li className="review-item" key={review.id}>
-              <Review reviewInfo={review} />
+        <ul className={styles.reviewsList}>
+          {restaurantInfo.reviews.map((id) => (
+            <li className={styles.reviewItem} key={id}>
+              <ReviewContainer id={id} />
             </li>
           ))}
         </ul>
       ) : (
         <p>No reviews</p>
       )}
-      <h3>Leave feedback</h3>
-      <ReviewForm />
+      <ReviewForm className={styles.reviewForm} />
     </div>
   );
 };

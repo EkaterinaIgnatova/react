@@ -1,21 +1,25 @@
 import { useCallback, useEffect, useState } from "react";
+import {
+  addToCart,
+  selectCountByDihId,
+  removeFromCart,
+} from "../redux/entities/cart/slice";
+import { useDispatch, useSelector } from "react-redux";
 
-const MAX_COUNT = 5;
-const MIN_COUNT = 0;
-
-export const useCounter = (onCountChange) => {
-  const [count, setCount] = useState(0);
+export const useCounter = (onCountChange, id) => {
+  const count = useSelector((state) => selectCountByDihId(state, id)) || 0;
+  const dispatch = useDispatch();
 
   const increaseCount = useCallback(() => {
-    setCount((count) => Math.min(count + 1, MAX_COUNT));
-  }, []);
+    dispatch(addToCart(id));
+  }, [dispatch, id]);
 
   const decreaseCount = useCallback(() => {
-    setCount((count) => Math.max(count - 1, MIN_COUNT));
-  }, []);
+    dispatch(removeFromCart(id));
+  }, [dispatch, id]);
 
   useEffect(() => {
-    onCountChange(count);
+    if (onCountChange) onCountChange(count);
   }, [count]);
 
   return { count, increaseCount, decreaseCount };

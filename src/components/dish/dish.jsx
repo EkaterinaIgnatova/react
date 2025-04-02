@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { DishCounter } from "../dishCounter/dishCounter";
-import "./dish.css";
+import styles from "./dish.module.css";
 
-export const Dish = ({ dishInfo }) => {
+export const Dish = ({ dishInfo, id, allowChangePrice }) => {
   const [price, setPrice] = useState(0);
 
   const changePrice = (count) => {
-    setPrice(dishInfo.price * count);
+    if (allowChangePrice) {
+      setPrice(dishInfo.price * count);
+    }
   };
 
   return (
     <>
-      <span>
-        {dishInfo.name} ({dishInfo.ingredients.join(", ")})
-      </span>
-      <div className="price">
-        <DishCounter onCountChange={changePrice} />
-        <b>{price + "$"}</b>
+      <span>{dishInfo.name}</span>
+      <div className={styles.price}>
+        <DishCounter onCountChange={changePrice} id={id} />
+        <b>{(allowChangePrice ? price : dishInfo.price) + "$"}</b>
       </div>
     </>
   );
