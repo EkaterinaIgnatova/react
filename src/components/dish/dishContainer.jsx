@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { getDishById } from "../redux/entities/dish/slice";
+import { selectDishById } from "../redux/entities/dish/slice";
 import { Dish } from "./dish";
 
 export const DishContainer = ({ id, allowChangePrice = false }) => {
-  const dishInfo = useSelector((state) => getDishById(state, id));
+  const dishInfo = useSelector((state) => selectDishById(state, id));
 
   if (!dishInfo) {
     return null;

@@ -1,9 +1,11 @@
 import { useSelector } from "react-redux";
 import { Restaurant } from "./restaurant";
-import { getRestaurantById } from "../redux/entities/restaurant/slice";
+import { selectRestaurantById } from "../redux/entities/restaurant/slice";
 
 export const RestaurantContainer = ({ id }) => {
-  const restaurantInfo = useSelector((state) => getRestaurantById(state, id));
+  const restaurantInfo = useSelector((state) =>
+    selectRestaurantById(state, id)
+  );
 
   if (!restaurantInfo) {
     return null;

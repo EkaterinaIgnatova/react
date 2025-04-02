@@ -4,11 +4,11 @@ export const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {},
   selectors: {
-    getCartState: (state) =>
+    selectCartState: (state) =>
       Object.keys(state).map((id) => {
         return { id, count: state[id] };
       }),
-    getCountById: (state, id) => state[id],
+    selectCountByDishId: (state, id) => state[id],
   },
   reducers: {
     addToCart: (state, { payload }) => {
@@ -23,5 +23,5 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { getCartState, getCountById } = cartSlice.selectors;
+export const { selectCartState, selectCountByDishId } = cartSlice.selectors;
 export const { addToCart, removeFromCart } = cartSlice.actions;

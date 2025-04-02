@@ -16,7 +16,7 @@ export const ToggleTheme = () => {
           })}
         ></i>
       }
-      rounded={true}
+      rounded
       onClick={toggleTheme}
     ></Button>
   );

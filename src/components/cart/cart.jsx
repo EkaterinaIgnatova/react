@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
-import { getCartState } from "../redux/entities/cart/slice";
+import { selectCartState } from "../redux/entities/cart/slice";
 import { DishContainer } from "../dish/dishContainer";
 import styles from "./cart.module.css";
 import { use } from "react";
 import { AuthContext } from "../authContext/authContext";
 
 export const Cart = () => {
-  const cartState = useSelector(getCartState);
+  const cartState = useSelector(selectCartState);
   const { user } = use(AuthContext);
 
   if (!user || !cartState) {
@@ -20,7 +20,7 @@ export const Cart = () => {
         <ul>
           {cartState.map((dish) => (
             <li key={dish.id} className={styles.cartItem}>
-              <DishContainer id={dish.id} allowChangePrice={true} />
+              <DishContainer id={dish.id} allowChangePrice />
             </li>
           ))}
         </ul>
