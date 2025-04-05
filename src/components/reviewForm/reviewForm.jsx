@@ -32,7 +32,7 @@ export const ReviewForm = ({ className }) => {
               count={form.rating}
               increaseCount={() => setRating(form.rating + 1)}
               decreaseCount={() => setRating(form.rating - 1)}
-            ></Counter>
+            />
           </FormControl>
         </div>
         <div className={styles.row}>
@@ -43,7 +43,7 @@ export const ReviewForm = ({ className }) => {
             />
           </FormControl>
         </div>
-        <Button label={"Clear form"} onClick={clearForm}></Button>
+        <Button label={"Clear form"} onClick={clearForm} />
       </div>
     </>
   );

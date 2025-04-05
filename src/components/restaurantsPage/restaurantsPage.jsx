@@ -19,7 +19,7 @@ export const RestaurantsPage = () => {
             id={id}
             isActive={selectedRestaurant === id}
             onClick={() => selectRestaurant(id)}
-          ></RestaurantTab>
+          />
         ))}
       </div>
       <RestaurantContainer id={selectedRestaurant} />

@@ -1,23 +1,17 @@
 import { use } from "react";
 import { Button } from "../button/button";
 import { ThemeContext } from "../themeContext/themeContext";
-import classNames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 export const ToggleTheme = () => {
   const { theme, toggleTheme } = use(ThemeContext);
 
   return (
     <Button
-      label={
-        <i
-          className={classNames("fa-solid", {
-            "fa-sun": theme === "dark",
-            "fa-moon": theme === "light",
-          })}
-        ></i>
-      }
+      label={<FontAwesomeIcon icon={theme === "light" ? faMoon : faSun} />}
       rounded
       onClick={toggleTheme}
-    ></Button>
+    />
   );
 };
