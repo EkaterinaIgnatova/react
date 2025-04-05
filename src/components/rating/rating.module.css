@@ -1,0 +1,7 @@
+.icon {
+  color: #ececec;
+
+  &.active {
+    color: #ffd43b;
+  }
+}
