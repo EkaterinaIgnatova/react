@@ -1,6 +1,8 @@
 import { use } from "react";
 import { AuthContext } from "../authContext/authContext";
 import styles from "./account.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 export const Account = () => {
   const { user } = use(AuthContext);
@@ -11,7 +13,7 @@ export const Account = () => {
 
   return (
     <div className={styles.root}>
-      <i className="fa-solid fa-user"></i>
+      <FontAwesomeIcon icon={faUser} />
       <span>{user.name}</span>
     </div>
   );
