@@ -15,11 +15,11 @@ export const Cart = () => {
 
   return (
     <>
-      <h3>Cart</h3>
+      <h2 className={styles.title}>Cart</h2>
       {cartState.length ? (
         <ul>
           {cartState.map((dish) => (
-            <li key={dish.id} className={styles.cartItem}>
+            <li key={dish.id} className={styles.item}>
               <DishContainer id={dish.id} allowChangePrice />
             </li>
           ))}

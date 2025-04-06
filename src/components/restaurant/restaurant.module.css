@@ -2,32 +2,7 @@
   text-align: center;
 }
 
-.dishesList {
+.tabsPanel {
   display: flex;
-  flex-direction: column;
-
-  .dishItem {
-    padding: 8px;
-    border-bottom: 1px solid #cfcfcf;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-
-.reviewsList {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-
-  .reviewItem {
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #cfcfcf;
-    width: 30%;
-  }
-}
-
-.reviewForm {
-  margin: auto;
+  gap: 4px;
 }

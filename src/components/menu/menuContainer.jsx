@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../redux/entities/restaurant/slice";
-import { Tab } from "../tab/tab";
+import { Menu } from "./menu";
 
-export const RestaurantTab = ({ id }) => {
+export const MenuContainer = ({ id }) => {
   const restaurantInfo = useSelector((state) =>
     selectRestaurantById(state, id)
   );
@@ -11,5 +11,5 @@ export const RestaurantTab = ({ id }) => {
     return null;
   }
 
-  return <Tab path={id + "/menu"} text={restaurantInfo.name} />;
+  return <Menu restaurantInfo={restaurantInfo} />;
 };

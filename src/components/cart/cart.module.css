@@ -1,6 +1,9 @@
-.cartItem {
-  padding: 8px;
+.title {
+  text-align: center;
+}
 
+.item {
+  padding: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
