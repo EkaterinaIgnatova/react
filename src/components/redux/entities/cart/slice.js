@@ -1,13 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { selectDishSlice } from "../dish/slice";
 
 export const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {},
   selectors: {
-    selectCartState: (state) =>
-      Object.keys(state).map((id) => {
-        return { id, count: state[id] };
-      }),
     selectCountByDishId: (state, id) => state[id],
   },
   reducers: {
@@ -23,5 +20,22 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { selectCartState, selectCountByDishId } = cartSlice.selectors;
+export const { selectCountByDishId } = cartSlice.selectors;
 export const { addToCart, removeFromCart } = cartSlice.actions;
+
+const selectCartSlice = (state) => state.cartSlice;
+
+export const selectCartState = createSelector([selectCartSlice], (cartState) =>
+  Object.keys(cartState).map((id) => {
+    return { id, count: cartState[id] };
+  })
+);
+
+export const selectTotalPrice = createSelector(
+  [selectCartSlice, selectDishSlice],
+  (cartState, dishState) => {
+    return Object.keys(cartState).reduce((acc, current) => {
+      return acc + dishState.entities[current].price * cartState[current];
+    }, 0);
+  }
+);

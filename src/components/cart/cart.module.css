@@ -1,7 +1,18 @@
-.cartItem {
-  padding: 8px;
+.title {
+  text-align: center;
+}
 
+.item {
+  padding: 8px;
+  border-bottom: 1px solid #cfcfcf;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.total {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
 }

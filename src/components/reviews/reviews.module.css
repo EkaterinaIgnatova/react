@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .reviewsList {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .review {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #cfcfcf;
+      width: 30%;
+    }
+  }
+
+  .form {
+    margin: auto;
+  }
+}

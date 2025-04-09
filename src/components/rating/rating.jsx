@@ -8,6 +8,7 @@ export const Rating = ({ currentRating, maxRating }) => {
   for (let i = 0; i < maxRating; i++) {
     stars.push(
       <FontAwesomeIcon
+        key={i}
         icon={faStar}
         className={classNames(styles.icon, {
           [styles.active]: i < currentRating,

@@ -6,6 +6,6 @@ export const ToggleAuth = () => {
   const { user, toggleAuth } = use(AuthContext);
 
   return (
-    <Button label={user ? "Выйти" : "Войти"} onClick={toggleAuth}></Button>
+    <Button label={user ? "Logout" : "Login"} onClick={toggleAuth}></Button>
   );
 };
