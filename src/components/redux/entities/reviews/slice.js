@@ -10,7 +10,7 @@ const initialState = {
 };
 
 export const reviewSlice = createSlice({
-  name: "reviewSlice",
+  name: "reviews",
   initialState,
   selectors: {
     selectReviewById: (state, id) => state.entities[id],

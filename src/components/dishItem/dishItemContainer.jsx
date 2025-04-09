@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectDishById } from "../redux/entities/dish/slice";
+import { selectDishById } from "../redux/entities/dishes/slice";
 import { DishItem } from "./dishItem";
 
 export const DishItemContainer = ({ id, allowChangePrice = false }) => {
