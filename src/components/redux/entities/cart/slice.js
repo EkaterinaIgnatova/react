@@ -1,4 +1,5 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { selectDishSlice } from "../dish/slice";
 
 export const cartSlice = createSlice({
   name: "cartSlice",
@@ -23,7 +24,6 @@ export const { selectCountByDishId } = cartSlice.selectors;
 export const { addToCart, removeFromCart } = cartSlice.actions;
 
 const selectCartSlice = (state) => state.cartSlice;
-const selectDishSlice = (state) => state.dishSlice;
 
 export const selectCartState = createSelector([selectCartSlice], (cartState) =>
   Object.keys(cartState).map((id) => {

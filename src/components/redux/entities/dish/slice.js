@@ -18,3 +18,4 @@ export const dishSlice = createSlice({
 });
 
 export const { selectDishById } = dishSlice.selectors;
+export const selectDishSlice = (state) => state.dishSlice;
