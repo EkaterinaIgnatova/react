@@ -8,13 +8,13 @@ export const RestaurantsPage = () => {
   const restaurantsIds = useSelector(selectRestaurantsIds);
 
   return (
-    <>
+    <div>
       <div className={styles.tabsPanel}>
         {restaurantsIds.map((id) => (
           <RestaurantTab key={id} id={id} />
         ))}
       </div>
       <Outlet />
-    </>
+    </div>
   );
 };

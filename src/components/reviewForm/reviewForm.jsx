@@ -17,7 +17,7 @@ export const ReviewForm = ({ className }) => {
   }
 
   return (
-    <>
+    <div>
       <h3>Leave feedback</h3>
       <div className={classNames(styles.root, className)}>
         <div className={styles.row}>
@@ -45,6 +45,6 @@ export const ReviewForm = ({ className }) => {
         </div>
         <Button label={"Clear form"} onClick={clearForm} />
       </div>
-    </>
+    </div>
   );
 };

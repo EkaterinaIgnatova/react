@@ -10,6 +10,7 @@ import { HomePage } from "../../pages/homePage/homePage";
 import { RestaurantPage } from "../../pages/restaurantPage/restaurantPage";
 import { MenuPage } from "../../pages/menuPage/menuPage";
 import { ReviewsPage } from "../../pages/reviewsPage/reviewsPage";
+import { DishPage } from "../../pages/dishPage/dishPage";
 
 export const App = () => {
   return (
@@ -25,6 +26,9 @@ export const App = () => {
                     <Route path="menu" element={<MenuPage />} />
                     <Route path="reviews" element={<ReviewsPage />} />
                   </Route>
+                </Route>
+                <Route path="dish">
+                  <Route path=":dishId" element={<DishPage />} />
                 </Route>
                 <Route path="*" element={<Navigate to={"/"} replace />} />
               </Route>

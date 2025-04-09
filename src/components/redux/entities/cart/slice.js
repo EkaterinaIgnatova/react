@@ -23,9 +23,19 @@ export const { selectCountByDishId } = cartSlice.selectors;
 export const { addToCart, removeFromCart } = cartSlice.actions;
 
 const selectCartSlice = (state) => state.cartSlice;
+const selectDishSlice = (state) => state.dishSlice;
 
 export const selectCartState = createSelector([selectCartSlice], (cartState) =>
   Object.keys(cartState).map((id) => {
     return { id, count: cartState[id] };
   })
+);
+
+export const selectTotalPrice = createSelector(
+  [selectCartSlice, selectDishSlice],
+  (cartState, dishState) => {
+    return Object.keys(cartState).reduce((acc, current) => {
+      return acc + dishState.entities[current].price * cartState[current];
+    }, 0);
+  }
 );
