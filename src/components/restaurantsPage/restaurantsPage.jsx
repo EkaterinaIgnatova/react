@@ -8,7 +8,7 @@ import { useRequest } from "../redux/hooks/useRequest";
 
 export const RestaurantsPage = () => {
   const restaurantsIds = useSelector(selectRestaurantsIds);
-  const requestStatus = useRequest(getRestaurants());
+  const requestStatus = useRequest(getRestaurants);
 
   return (
     <div>

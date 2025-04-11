@@ -18,7 +18,7 @@ export const useRequest = (thunk, ...params) => {
       request.abort();
       setRequest(null);
     };
-  }, [dispatch, ...params]);
+  }, [dispatch, thunk, ...params]);
 
   return requestStatus;
 };
