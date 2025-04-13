@@ -10,8 +10,8 @@ export const RestaurantContainer = ({ id }) => {
   );
   const requestStatus = useRequest(getRestaurantById, id);
 
-  if (!restaurantInfo) {
-    return null;
+  if (requestStatus === "rejected") {
+    return <p>Restaurant is not found</p>;
   }
 
   return <Restaurant restaurantInfo={restaurantInfo} />;

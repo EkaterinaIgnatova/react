@@ -10,12 +10,18 @@ export const RestaurantsPage = () => {
   const restaurantsIds = useSelector(selectRestaurantsIds);
   const requestStatus = useRequest(getRestaurants);
 
+  const arrayForSkeletons = [null, null, null];
+
+  if (requestStatus === "rejected") {
+    return <p>No restaurants</p>;
+  }
+
   return (
     <div>
       <div className={styles.tabsPanel}>
-        {restaurantsIds.map((id) => (
-          <RestaurantTab key={id} id={id} />
-        ))}
+        {requestStatus === "pending"
+          ? arrayForSkeletons.map((id) => <RestaurantTab id={id} />)
+          : restaurantsIds.map((id) => <RestaurantTab key={id} id={id} />)}
       </div>
       <Outlet />
     </div>

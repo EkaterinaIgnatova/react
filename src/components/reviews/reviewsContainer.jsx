@@ -9,12 +9,16 @@ export const ReviewsContainer = ({ id }) => {
   const restaurantInfo = useSelector((state) =>
     selectRestaurantById(state, id)
   );
-  const reviewsRequestStatus = useRequest(getReviews, id);
-  const usersRequestStatus = useRequest(getUsers);
 
-  if (!restaurantInfo) {
-    return null;
-  }
+  const requestStatuses = {
+    reviews: useRequest(getReviews, id),
+    users: useRequest(getUsers),
+  };
 
-  return <Reviews restaurantInfo={restaurantInfo} />;
+  return (
+    <Reviews
+      restaurantInfo={restaurantInfo}
+      requestStatuses={requestStatuses}
+    />
+  );
 };

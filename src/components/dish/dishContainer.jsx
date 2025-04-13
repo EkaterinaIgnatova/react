@@ -6,12 +6,11 @@ import { useRequest } from "../redux/hooks/useRequest";
 
 export const DishContainer = ({ id }) => {
   const dishInfo = useSelector((state) => selectDishById(state, id));
-
   const requestStatus = useRequest(getDishById, id);
 
-  if (!dishInfo) {
-    return null;
+  if (requestStatus === "rejected") {
+    return <p>Dish is not found</p>;
   }
 
-  return <Dish dishInfo={dishInfo} id={id} />;
+  return <Dish dishInfo={dishInfo} id={id} requestStatus={requestStatus} />;
 };

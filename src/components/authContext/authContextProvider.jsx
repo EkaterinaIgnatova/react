@@ -1,9 +1,12 @@
 import { AuthContext } from "./authContext";
-import { user as userInfo } from "../../assets/mock";
 import { useState } from "react";
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+
+  const userInfo = {
+    name: "Ivan",
+  };
 
   const toggleAuth = () => {
     setUser(user ? null : userInfo);

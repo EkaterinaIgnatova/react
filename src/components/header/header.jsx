@@ -6,7 +6,7 @@ import styles from "./header.module.css";
 export const Header = () => {
   return (
     <div className={styles.root}>
-      <h1>Restourants</h1>
+      <h1>Restaurants</h1>
       <div className={styles.menu}>
         <Account />
         <div className={styles.actions}>

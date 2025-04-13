@@ -10,9 +10,5 @@ export const MenuContainer = ({ id }) => {
   );
   const requestStatus = useRequest(getDishes, id);
 
-  if (!restaurantInfo) {
-    return null;
-  }
-
-  return <Menu restaurantInfo={restaurantInfo} />;
+  return <Menu restaurantInfo={restaurantInfo} requestStatus={requestStatus} />;
 };
