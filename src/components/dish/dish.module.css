@@ -1,5 +1,25 @@
-.price {
+.title {
+  text-align: center;
+}
+
+.dishInfo {
   display: flex;
-  gap: 8px;
-  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+
+  .ingredient {
+    padding: 8px;
+    border-bottom: 1px solid #cfcfcf;
+  }
+
+  .price {
+    display: flex;
+    justify-content: space-between;
+
+    .counter {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+  }
 }

@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+
+  .price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+}
