@@ -1,16 +1,12 @@
-import { useSelector } from "react-redux";
-import { selectDishById } from "../redux/entities/dishes/slice";
 import { Dish } from "./dish";
-import { getDishById } from "../redux/entities/dishes/getDishById";
-import { useRequest } from "../redux/hooks/useRequest";
+import { useGetDishByIdQuery } from "../redux/services/api";
 
 export const DishContainer = ({ id }) => {
-  const dishInfo = useSelector((state) => selectDishById(state, id));
-  const requestStatus = useRequest(getDishById, id);
+  const { data, isLoading, isError } = useGetDishByIdQuery(id);
 
-  if (requestStatus === "rejected") {
+  if (isError) {
     return <p>Dish is not found</p>;
   }
 
-  return <Dish dishInfo={dishInfo} id={id} requestStatus={requestStatus} />;
+  return <Dish dishInfo={data} id={id} isLoading={isLoading} />;
 };

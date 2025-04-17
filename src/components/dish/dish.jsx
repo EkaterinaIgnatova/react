@@ -2,8 +2,8 @@ import Skeleton from "react-loading-skeleton";
 import { DishCounter } from "../dishCounter/dishCounter";
 import styles from "./dish.module.css";
 
-export const Dish = ({ dishInfo, id, requestStatus }) => {
-  const arrayForSkeletons = [null, null, null];
+export const Dish = ({ dishInfo, id, isLoading }) => {
+  const arrayForSkeletons = new Array(3).fill(null);
 
   return (
     <div>
@@ -13,20 +13,28 @@ export const Dish = ({ dishInfo, id, requestStatus }) => {
       <div className={styles.dishInfo}>
         <div>
           <h3>Ingredients</h3>
-          <ul>
-            {(dishInfo?.ingredients || arrayForSkeletons).map((ingredient) => (
-              <li className={styles.ingredient}>
-                {ingredient || <Skeleton width={200} />}
-              </li>
-            ))}
-          </ul>
+          <div>
+            {isLoading
+              ? arrayForSkeletons.map(() => (
+                  <div className={styles.skeletonWrapper}>
+                    <Skeleton height={30} />
+                  </div>
+                ))
+              : dishInfo?.ingredients.map((ingredient) => (
+                  <div className={styles.ingredient}>{ingredient}</div>
+                ))}
+          </div>
         </div>
         <div className={styles.price}>
           <h3>Price</h3>
-          <div className={styles.counter}>
-            <DishCounter id={id} />
-            <b>{dishInfo ? dishInfo.price + "$" : <Skeleton width={30} />}</b>
-          </div>
+          {dishInfo ? (
+            <div className={styles.counter}>
+              <DishCounter id={id} />
+              <b>{dishInfo.price + "$"}</b>
+            </div>
+          ) : (
+            <Skeleton width={100} height={30} />
+          )}
         </div>
       </div>
     </div>

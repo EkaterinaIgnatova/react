@@ -4,9 +4,9 @@ import styles from "./counter.module.css";
 export const Counter = ({ count, decreaseCount, increaseCount }) => {
   return (
     <div className={styles.root}>
-      <Button label={"-"} onClick={decreaseCount} rounded={true} />
+      <Button label={"-"} onClick={decreaseCount} rounded />
       <span>{count}</span>
-      <Button label={"+"} onClick={increaseCount} rounded={true} />
+      <Button label={"+"} onClick={increaseCount} rounded />
     </div>
   );
 };

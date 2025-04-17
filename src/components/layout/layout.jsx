@@ -3,9 +3,9 @@ import { ProgressBar } from "../progressBar/progressBar";
 import { Header } from "../header/header";
 import styles from "./layout.module.css";
 import { Outlet } from "react-router";
-import { Cart } from "../cart/cart";
+import { CartContainer } from "../cart/cartContainer";
 
-export const Layout = ({ children }) => {
+export const Layout = () => {
   const layoutRef = useRef(null);
 
   return (
@@ -14,7 +14,7 @@ export const Layout = ({ children }) => {
       <Header />
       <div className={styles.content}>
         <Outlet />
-        <Cart />
+        <CartContainer />
       </div>
       <footer className={styles.footer}>
         <span>best-rest@gmail.com</span>

@@ -1,23 +1,21 @@
-import { DishItemContainer } from "../dishItem/dishItemContainer";
+import Skeleton from "react-loading-skeleton";
+import { DishItem } from "../dishItem/dishItem";
 import styles from "./menu.module.css";
 
-export const Menu = ({ restaurantInfo, requestStatus }) => {
-  const arrayForSkeletons = [null, null, null];
+export const Menu = ({ restaurantMenu, isLoading }) => {
+  const arrayForSkeletons = new Array(3).fill(null);
 
   return (
-    <div>
-      <h3>Menu</h3>
-      {requestStatus === "rejected" ? (
-        <p>No dishes</p>
-      ) : (
-        <div className={styles.dishesList}>
-          {requestStatus === "pending"
-            ? arrayForSkeletons.map((id) => <DishItemContainer id={id} />)
-            : restaurantInfo?.menu.map((id) => (
-                <DishItemContainer key={id} id={id} />
-              ))}
-        </div>
-      )}
+    <div className={styles.root}>
+      {isLoading
+        ? arrayForSkeletons.map(() => (
+            <div className={styles.skeletonWrapper}>
+              <Skeleton height={30} />
+            </div>
+          ))
+        : restaurantMenu?.map(({ id, name, price }) => (
+            <DishItem key={id} id={id} name={name} price={price} />
+          ))}
     </div>
   );
 };

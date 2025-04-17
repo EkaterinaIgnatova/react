@@ -1,27 +1,30 @@
-import { RestaurantTab } from "../restaurantTab/restaurantTab";
 import styles from "./restaurantsPage.module.css";
-import { useSelector } from "react-redux";
-import { selectRestaurantsIds } from "../redux/entities/restaurants/slice";
 import { Outlet } from "react-router";
-import { getRestaurants } from "../redux/entities/restaurants/getRestaurants";
-import { useRequest } from "../redux/hooks/useRequest";
+import {
+  useGetDishesQuery,
+  useGetRestaurantsQuery,
+} from "../redux/services/api";
+import { Tab } from "../tab/tab";
+import Skeleton from "react-loading-skeleton";
 
 export const RestaurantsPage = () => {
-  const restaurantsIds = useSelector(selectRestaurantsIds);
-  const requestStatus = useRequest(getRestaurants);
+  const { data, isLoading, isError } = useGetRestaurantsQuery();
+  const {} = useGetDishesQuery();
 
-  const arrayForSkeletons = [null, null, null];
+  const arrayForSkeletons = new Array(3).fill(null);
 
-  if (requestStatus === "rejected") {
+  if (isError) {
     return <p>No restaurants</p>;
   }
 
   return (
     <div>
       <div className={styles.tabsPanel}>
-        {requestStatus === "pending"
-          ? arrayForSkeletons.map((id) => <RestaurantTab id={id} />)
-          : restaurantsIds.map((id) => <RestaurantTab key={id} id={id} />)}
+        {isLoading
+          ? arrayForSkeletons.map(() => <Skeleton width={100} height={34} />)
+          : data.map(({ id, name }) => (
+              <Tab key={id} path={id + "/menu"} text={name} />
+            ))}
       </div>
       <Outlet />
     </div>
