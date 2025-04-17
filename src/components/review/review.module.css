@@ -3,4 +3,14 @@
   border-radius: 8px;
   border: 1px solid #cfcfcf;
   width: 30%;
+  position: relative;
+
+  .skeletonWrapper {
+    padding: 16px 0;
+  }
+
+  .editButton {
+    position: absolute;
+    right: 8px;
+  }
 }

@@ -1,27 +1,17 @@
-import { ReviewContainer } from "../review/reviewContainer";
-import { ReviewForm } from "../reviewForm/reviewForm";
+import { Review } from "../review/review";
+import { ReviewSkeleton } from "../review/reviewSkeleton";
 import styles from "./reviews.module.css";
 
-export const Reviews = ({ restaurantInfo, requestStatuses }) => {
-  const arrayForSkeletons = [null, null, null];
+export const Reviews = ({ restaurantReviews, isLoading, onEdit }) => {
+  const arrayForSkeletons = new Array(3).fill(null);
 
   return (
     <div className={styles.root}>
-      <div>
-        <h3>Reviews</h3>
-        {requestStatuses.reviews === "rejected" ? (
-          <p>No reviews</p>
-        ) : (
-          <div className={styles.reviewsList}>
-            {requestStatuses.reviews === "pending"
-              ? arrayForSkeletons.map((id) => <ReviewContainer id={id} />)
-              : restaurantInfo?.reviews.map((id) => (
-                  <ReviewContainer key={id} id={id} />
-                ))}
-          </div>
-        )}
-      </div>
-      <ReviewForm className={styles.form} />
+      {isLoading
+        ? arrayForSkeletons.map(() => <ReviewSkeleton />)
+        : restaurantReviews?.map((review) => (
+            <Review key={review.id} reviewInfo={review} onEdit={onEdit} />
+          ))}
     </div>
   );
 };

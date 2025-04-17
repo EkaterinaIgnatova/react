@@ -1,24 +1,67 @@
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../redux/entities/restaurants/slice";
 import { Reviews } from "./reviews";
-import { useRequest } from "../redux/hooks/useRequest";
-import { getReviews } from "../redux/entities/reviews/getReviews";
-import { getUsers } from "../redux/entities/users/getUsers";
+import {
+  useAddReviewMutation,
+  useEditReviewMutation,
+  useGetReviewsByRestaurantIdQuery,
+  useGetUsersQuery,
+} from "../redux/services/api";
+import { ReviewForm } from "../reviewForm/reviewForm";
+import styles from "./reviews.module.css";
+import React, { useRef, useState } from "react";
 
 export const ReviewsContainer = ({ id }) => {
-  const restaurantInfo = useSelector((state) =>
-    selectRestaurantById(state, id)
-  );
+  const {
+    data: reviewsData,
+    isLoading: isReviewsLoading,
+    isError: isReviewsError,
+  } = useGetReviewsByRestaurantIdQuery(id);
+  const { isLoading: isUsersLoading, isError: isUsersError } =
+    useGetUsersQuery();
 
-  const requestStatuses = {
-    reviews: useRequest(getReviews, id),
-    users: useRequest(getUsers),
+  const isLoading = isReviewsLoading || isUsersLoading;
+  const isError = isUsersError || isReviewsError;
+
+  const [addReview, { isLoading: isAddReviewLoading }] = useAddReviewMutation();
+  const [editReview, { isLoading: isEditReviewLoading }] =
+    useEditReviewMutation();
+
+  const sendReview = (review) => {
+    reviewToEdit
+      ? editReview({ id: review.id, review })
+      : addReview({ restaurantId: id, review });
+    setReviewToEdit(null);
   };
 
+  const [reviewToEdit, setReviewToEdit] = useState();
+
+  const startEditReview = (review) => {
+    formRef.current.scrollIntoView();
+    setReviewToEdit(review);
+  };
+
+  const formRef = useRef();
+
   return (
-    <Reviews
-      restaurantInfo={restaurantInfo}
-      requestStatuses={requestStatuses}
-    />
+    <div className={styles.container}>
+      <div>
+        <h3>Reviews</h3>
+        {isError ? (
+          <p>No reviews</p>
+        ) : (
+          <Reviews
+            restaurantReviews={reviewsData}
+            isLoading={isLoading}
+            onEdit={startEditReview}
+          />
+        )}
+      </div>
+      <ReviewForm
+        ref={formRef}
+        review={reviewToEdit}
+        className={styles.form}
+        onSubmit={sendReview}
+        isLoading={isAddReviewLoading || isEditReviewLoading}
+      />
+    </div>
   );
 };

@@ -1,9 +1,9 @@
-.root {
+.container {
   display: flex;
   flex-direction: column;
   gap: 24px;
 
-  .reviewsList {
+  .root {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;

@@ -6,13 +6,13 @@
   background-color: #ececec;
   color: #000000;
 
-  &:hover {
+  &:hover:not(.disabled) {
     cursor: pointer;
     background-color: #cfcfcf;
   }
 
-  &.active {
-    background-color: #cfcfcf;
+  &.disabled {
+    pointer-events: none;
   }
 
   &.rounded {
@@ -26,8 +26,7 @@
     background-color: #3b3b3b;
     color: #ffffff;
 
-    &:hover,
-    &.active {
+    &:hover {
       background-color: #1d1d1d;
     }
   }

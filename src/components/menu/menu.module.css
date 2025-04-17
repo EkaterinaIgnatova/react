@@ -1,4 +1,8 @@
-.dishesList {
+.root {
   display: flex;
   flex-direction: column;
+
+  .skeletonWrapper {
+    padding: 8px 0;
+  }
 }
