@@ -1,25 +1,33 @@
+import { REQUEST_STATUS_PENDING } from "../redux/constants";
 import { ReviewContainer } from "../review/reviewContainer";
-import { ReviewForm } from "../reviewForm/reviewForm";
 import styles from "./reviews.module.css";
+import { ReviewSkeleton } from "../review/reviewSkeleton";
 
-export const Reviews = ({ restaurantInfo }) => {
+export const Reviews = ({
+  restaurantInfo,
+  reviewsRequestStatus,
+  usersRequestStatus,
+}) => {
+  const arrayForSkeletons = new Array(3).fill(null);
+
+  if (
+    reviewsRequestStatus === REQUEST_STATUS_PENDING ||
+    usersRequestStatus === REQUEST_STATUS_PENDING
+  ) {
+    return (
+      <div className={styles.root}>
+        {arrayForSkeletons.map(() => (
+          <ReviewSkeleton />
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className={styles.root}>
-      <div>
-        <h3>Reviews</h3>
-        {restaurantInfo.reviews?.length ? (
-          <ul className={styles.reviewsList}>
-            {restaurantInfo.reviews.map((id) => (
-              <li className={styles.review} key={id}>
-                <ReviewContainer id={id} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No reviews</p>
-        )}
-      </div>
-      <ReviewForm className={styles.form} />
+      {restaurantInfo?.reviews.map((id) => (
+        <ReviewContainer key={id} id={id} />
+      ))}
     </div>
   );
 };

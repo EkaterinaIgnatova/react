@@ -1,13 +1,12 @@
 import { Rating } from "../rating/rating";
-
-const MAX_RATING = 5;
+import styles from "./review.module.css";
 
 export const Review = ({ reviewInfo, user }) => {
   return (
-    <>
-      <h4>{user.name}</h4>
-      <Rating currentRating={reviewInfo.rating} maxRating={MAX_RATING} />
-      <p>{reviewInfo.text}</p>
-    </>
+    <div className={styles.root}>
+      <h4>{user?.name}</h4>
+      <Rating currentRating={reviewInfo?.rating || 0} />
+      <p>{reviewInfo?.text}</p>
+    </div>
   );
 };

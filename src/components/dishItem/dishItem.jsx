@@ -14,10 +14,12 @@ export const DishItem = ({ dishInfo, id, allowChangePrice }) => {
 
   return (
     <div className={styles.root}>
-      <Link to={"/dish/" + id}>{dishInfo.name}</Link>
-      <div className={styles.price}>
+      <Link to={"/dish/" + id}>{dishInfo?.name}</Link>
+      <div className={styles.counter}>
         <DishCounter onCountChange={changePrice} id={id} />
-        <b>{(allowChangePrice ? price : dishInfo.price) + "$"}</b>
+        <b className={styles.price}>
+          {(allowChangePrice ? price : dishInfo?.price) + "$"}
+        </b>
       </div>
     </div>
   );

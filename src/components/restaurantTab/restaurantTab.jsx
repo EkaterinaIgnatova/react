@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../redux/entities/restaurant/slice";
+import { selectRestaurantById } from "../redux/entities/restaurants/slice";
 import { Tab } from "../tab/tab";
 
 export const RestaurantTab = ({ id }) => {
@@ -7,9 +7,5 @@ export const RestaurantTab = ({ id }) => {
     selectRestaurantById(state, id)
   );
 
-  if (!restaurantInfo) {
-    return null;
-  }
-
-  return <Tab path={id + "/menu"} text={restaurantInfo.name} />;
+  return <Tab path={id + "/menu"} text={restaurantInfo?.name} />;
 };

@@ -11,6 +11,7 @@ import { RestaurantPage } from "../../pages/restaurantPage/restaurantPage";
 import { MenuPage } from "../../pages/menuPage/menuPage";
 import { ReviewsPage } from "../../pages/reviewsPage/reviewsPage";
 import { DishPage } from "../../pages/dishPage/dishPage";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export const App = () => {
   return (

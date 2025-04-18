@@ -10,9 +10,9 @@ import { Counter } from "../counter/counter";
 export const ReviewForm = ({ className }) => {
   const { form, setName, setText, setRating, clearForm } = useForm();
 
-  const { user } = use(AuthContext);
+  const { auth } = use(AuthContext);
 
-  if (!user) {
+  if (!auth.isUserAuth) {
     return null;
   }
 

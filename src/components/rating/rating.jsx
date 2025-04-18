@@ -3,9 +3,11 @@ import styles from "./rating.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
-export const Rating = ({ currentRating, maxRating }) => {
+const MAX_RATING = 5;
+
+export const Rating = ({ currentRating }) => {
   let stars = [];
-  for (let i = 0; i < maxRating; i++) {
+  for (let i = 0; i < MAX_RATING; i++) {
     stars.push(
       <FontAwesomeIcon
         key={i}
