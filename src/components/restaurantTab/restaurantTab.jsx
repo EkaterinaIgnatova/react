@@ -3,9 +3,9 @@ import { selectRestaurantById } from "../redux/entities/restaurants/slice";
 import { Tab } from "../tab/tab";
 
 export const RestaurantTab = ({ id }) => {
-  const restaurantInfo = id
-    ? useSelector((state) => selectRestaurantById(state, id))
-    : null;
+  const restaurantInfo = useSelector((state) =>
+    selectRestaurantById(state, id)
+  );
 
   return <Tab path={id + "/menu"} text={restaurantInfo?.name} />;
 };

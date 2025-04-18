@@ -1,9 +1,24 @@
 import Skeleton from "react-loading-skeleton";
 import { DishCounter } from "../dishCounter/dishCounter";
 import styles from "./dish.module.css";
+import { REQUEST_STATUS_PENDING } from "../redux/constants";
 
 export const Dish = ({ dishInfo, id, requestStatus }) => {
-  const arrayForSkeletons = [null, null, null];
+  const arrayForSkeletons = new Array(3).fill(null);
+
+  const checkStatus = (status) => {
+    if (requestStatus === status) {
+      return arrayForSkeletons.map(() => (
+        <div className={styles.skeletonWrapper}>
+          <Skeleton height={30} />
+        </div>
+      ));
+    } else {
+      return dishInfo?.ingredients.map((ingredient) => (
+        <div className={styles.ingredient}>{ingredient}</div>
+      ));
+    }
+  };
 
   return (
     <div>
@@ -13,13 +28,7 @@ export const Dish = ({ dishInfo, id, requestStatus }) => {
       <div className={styles.dishInfo}>
         <div>
           <h3>Ingredients</h3>
-          <ul>
-            {(dishInfo?.ingredients || arrayForSkeletons).map((ingredient) => (
-              <li className={styles.ingredient}>
-                {ingredient || <Skeleton width={200} />}
-              </li>
-            ))}
-          </ul>
+          <div>{checkStatus(REQUEST_STATUS_PENDING)}</div>
         </div>
         <div className={styles.price}>
           <h3>Price</h3>

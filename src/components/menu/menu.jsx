@@ -1,23 +1,28 @@
+import Skeleton from "react-loading-skeleton";
 import { DishItemContainer } from "../dishItem/dishItemContainer";
+import { REQUEST_STATUS_PENDING } from "../redux/constants";
 import styles from "./menu.module.css";
 
 export const Menu = ({ restaurantInfo, requestStatus }) => {
-  const arrayForSkeletons = [null, null, null];
+  const arrayForSkeletons = new Array(3).fill(null);
+
+  if (requestStatus === REQUEST_STATUS_PENDING) {
+    return (
+      <div className={styles.root}>
+        {arrayForSkeletons.map(() => (
+          <div className={styles.skeletonWrapper}>
+            <Skeleton height={30} />
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <h3>Menu</h3>
-      {requestStatus === "rejected" ? (
-        <p>No dishes</p>
-      ) : (
-        <div className={styles.dishesList}>
-          {requestStatus === "pending"
-            ? arrayForSkeletons.map((id) => <DishItemContainer id={id} />)
-            : restaurantInfo?.menu.map((id) => (
-                <DishItemContainer key={id} id={id} />
-              ))}
-        </div>
-      )}
+    <div className={styles.root}>
+      {restaurantInfo?.menu.map((id) => (
+        <DishItemContainer key={id} id={id} />
+      ))}
     </div>
   );
 };

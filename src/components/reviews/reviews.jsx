@@ -1,27 +1,33 @@
+import { REQUEST_STATUS_PENDING } from "../redux/constants";
 import { ReviewContainer } from "../review/reviewContainer";
-import { ReviewForm } from "../reviewForm/reviewForm";
 import styles from "./reviews.module.css";
+import { ReviewSkeleton } from "../review/reviewSkeleton";
 
-export const Reviews = ({ restaurantInfo, requestStatuses }) => {
-  const arrayForSkeletons = [null, null, null];
+export const Reviews = ({
+  restaurantInfo,
+  reviewsRequestStatus,
+  usersRequestStatus,
+}) => {
+  const arrayForSkeletons = new Array(3).fill(null);
+
+  if (
+    reviewsRequestStatus === REQUEST_STATUS_PENDING ||
+    usersRequestStatus === REQUEST_STATUS_PENDING
+  ) {
+    return (
+      <div className={styles.root}>
+        {arrayForSkeletons.map(() => (
+          <ReviewSkeleton />
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className={styles.root}>
-      <div>
-        <h3>Reviews</h3>
-        {requestStatuses.reviews === "rejected" ? (
-          <p>No reviews</p>
-        ) : (
-          <div className={styles.reviewsList}>
-            {requestStatuses.reviews === "pending"
-              ? arrayForSkeletons.map((id) => <ReviewContainer id={id} />)
-              : restaurantInfo?.reviews.map((id) => (
-                  <ReviewContainer key={id} id={id} />
-                ))}
-          </div>
-        )}
-      </div>
-      <ReviewForm className={styles.form} />
+      {restaurantInfo?.reviews.map((id) => (
+        <ReviewContainer key={id} id={id} />
+      ))}
     </div>
   );
 };

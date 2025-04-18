@@ -15,5 +15,4 @@ export const store = configureStore({
     [cartSlice.name]: cartSlice.reducer,
     [requestSlice.name]: requestSlice.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
