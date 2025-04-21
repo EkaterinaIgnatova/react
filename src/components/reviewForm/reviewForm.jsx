@@ -10,7 +10,6 @@ import { Counter } from "../counter/counter";
 export const ReviewForm = React.forwardRef(
   ({ className, onSubmit, isLoading, review }, ref) => {
     const { form, setText, setRating, clearForm, fillForm } = useForm();
-
     const { auth } = use(AuthContext);
 
     useEffect(() => {

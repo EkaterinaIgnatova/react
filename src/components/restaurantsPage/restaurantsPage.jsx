@@ -17,14 +17,25 @@ export const RestaurantsPage = () => {
     return <p>No restaurants</p>;
   }
 
+  if (isLoading) {
+    return (
+      <div>
+        <div className={styles.tabsPanel}>
+          {arrayForSkeletons.map(() => (
+            <Skeleton width={100} height={34} />
+          ))}
+        </div>
+        <Outlet />
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className={styles.tabsPanel}>
-        {isLoading
-          ? arrayForSkeletons.map(() => <Skeleton width={100} height={34} />)
-          : data.map(({ id, name }) => (
-              <Tab key={id} path={id + "/menu"} text={name} />
-            ))}
+        {data.map(({ id, name }) => (
+          <Tab key={id} path={id + "/menu"} text={name} />
+        ))}
       </div>
       <Outlet />
     </div>

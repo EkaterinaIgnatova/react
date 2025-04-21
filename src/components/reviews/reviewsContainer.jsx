@@ -32,6 +32,22 @@ export const ReviewsContainer = ({ id }) => {
     setReviewToEdit(null);
   };
 
+  if (isError) {
+    <div className={styles.container}>
+      <div>
+        <h3>Reviews</h3>
+        <p>No reviews</p>
+      </div>
+      <ReviewForm
+        ref={formRef}
+        review={reviewToEdit}
+        className={styles.form}
+        onSubmit={sendReview}
+        isLoading={isAddReviewLoading || isEditReviewLoading}
+      />
+    </div>;
+  }
+
   const [reviewToEdit, setReviewToEdit] = useState();
 
   const startEditReview = (review) => {
@@ -45,15 +61,11 @@ export const ReviewsContainer = ({ id }) => {
     <div className={styles.container}>
       <div>
         <h3>Reviews</h3>
-        {isError ? (
-          <p>No reviews</p>
-        ) : (
-          <Reviews
-            restaurantReviews={reviewsData}
-            isLoading={isLoading}
-            onEdit={startEditReview}
-          />
-        )}
+        <Reviews
+          restaurantReviews={reviewsData}
+          isLoading={isLoading}
+          onEdit={startEditReview}
+        />
       </div>
       <ReviewForm
         ref={formRef}

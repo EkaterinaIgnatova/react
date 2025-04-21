@@ -23,14 +23,19 @@ export const CartContainer = () => {
     return null;
   }
 
+  if (isError || !Object.keys(cartState).length) {
+    return (
+      <div>
+        <h2 className={styles.title}>Cart</h2>
+        <p>Cart is empty</p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h2 className={styles.title}>Cart</h2>
-      {isError || !Object.keys(cartState).length ? (
-        <p>Cart is empty</p>
-      ) : (
-        <Cart dishes={data} />
-      )}
+      <Cart dishes={data} />
       <CartTotal state={cartState} data={data} />
     </div>
   );

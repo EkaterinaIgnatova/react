@@ -5,17 +5,23 @@ import styles from "./menu.module.css";
 export const Menu = ({ restaurantMenu, isLoading }) => {
   const arrayForSkeletons = new Array(3).fill(null);
 
+  if (isLoading) {
+    return (
+      <div className={styles.root}>
+        {arrayForSkeletons.map(() => (
+          <div className={styles.skeletonWrapper}>
+            <Skeleton height={30} />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className={styles.root}>
-      {isLoading
-        ? arrayForSkeletons.map(() => (
-            <div className={styles.skeletonWrapper}>
-              <Skeleton height={30} />
-            </div>
-          ))
-        : restaurantMenu?.map(({ id, name, price }) => (
-            <DishItem key={id} id={id} name={name} price={price} />
-          ))}
+      {restaurantMenu?.map(({ id, name, price }) => (
+        <DishItem key={id} id={id} name={name} price={price} />
+      ))}
     </div>
   );
 };

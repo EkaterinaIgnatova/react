@@ -9,14 +9,19 @@ export const MenuContainer = ({ restaurantInfo }) => {
     }),
   });
 
+  if (isError) {
+    return (
+      <div>
+        <h3>Menu</h3>
+        <p>No dishes</p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h3>Menu</h3>
-      {isError ? (
-        <p>No dishes</p>
-      ) : (
-        <Menu restaurantMenu={data} isLoading={isLoading} />
-      )}
+      <Menu restaurantMenu={data} isLoading={isLoading} />
     </div>
   );
 };
