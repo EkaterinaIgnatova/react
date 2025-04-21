@@ -1,12 +1,11 @@
 import Skeleton from "react-loading-skeleton";
-import { DishItemContainer } from "../dishItem/dishItemContainer";
-import { REQUEST_STATUS_PENDING } from "../redux/constants";
+import { DishItem } from "../dishItem/dishItem";
 import styles from "./menu.module.css";
 
-export const Menu = ({ restaurantInfo, requestStatus }) => {
+export const Menu = ({ restaurantMenu, isLoading }) => {
   const arrayForSkeletons = new Array(3).fill(null);
 
-  if (requestStatus === REQUEST_STATUS_PENDING) {
+  if (isLoading) {
     return (
       <div className={styles.root}>
         {arrayForSkeletons.map(() => (
@@ -20,8 +19,8 @@ export const Menu = ({ restaurantInfo, requestStatus }) => {
 
   return (
     <div className={styles.root}>
-      {restaurantInfo?.menu.map((id) => (
-        <DishItemContainer key={id} id={id} />
+      {restaurantMenu?.map(({ id, name, price }) => (
+        <DishItem key={id} id={id} name={name} price={price} />
       ))}
     </div>
   );

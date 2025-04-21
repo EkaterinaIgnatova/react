@@ -1,19 +1,17 @@
-import { useSelector } from "react-redux";
 import { Restaurant } from "./restaurant";
-import { selectRestaurantById } from "../redux/entities/restaurants/slice";
-import { useRequest } from "../redux/hooks/useRequest";
-import { getRestaurantById } from "../redux/entities/restaurants/getRestaurantById";
-import { REQUEST_STATUS_REJECTED } from "../redux/constants";
+import { useGetRestaurantsQuery } from "../redux/services/api";
 
 export const RestaurantContainer = ({ id }) => {
-  const restaurantInfo = useSelector((state) =>
-    selectRestaurantById(state, id)
-  );
-  const requestStatus = useRequest(getRestaurantById, id);
+  const { data, isError } = useGetRestaurantsQuery(undefined, {
+    selectFromResult: (res) => ({
+      ...res,
+      data: res.data?.find((el) => el.id === id),
+    }),
+  });
 
-  if (requestStatus === REQUEST_STATUS_REJECTED) {
+  if (isError) {
     return <p>Restaurant is not found</p>;
   }
 
-  return <Restaurant restaurantInfo={restaurantInfo} />;
+  return <Restaurant restaurantInfo={data} />;
 };

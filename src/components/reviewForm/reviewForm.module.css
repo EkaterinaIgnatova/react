@@ -11,5 +11,9 @@
     display: flex;
     gap: 16px;
     justify-content: space-between;
+
+    .button {
+      flex-grow: 1;
+    }
   }
 }

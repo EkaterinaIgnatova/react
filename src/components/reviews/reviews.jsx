@@ -1,19 +1,11 @@
-import { REQUEST_STATUS_PENDING } from "../redux/constants";
-import { ReviewContainer } from "../review/reviewContainer";
-import styles from "./reviews.module.css";
+import { Review } from "../review/review";
 import { ReviewSkeleton } from "../review/reviewSkeleton";
+import styles from "./reviews.module.css";
 
-export const Reviews = ({
-  restaurantInfo,
-  reviewsRequestStatus,
-  usersRequestStatus,
-}) => {
+export const Reviews = ({ restaurantReviews, isLoading, onEdit }) => {
   const arrayForSkeletons = new Array(3).fill(null);
 
-  if (
-    reviewsRequestStatus === REQUEST_STATUS_PENDING ||
-    usersRequestStatus === REQUEST_STATUS_PENDING
-  ) {
+  if (isLoading) {
     return (
       <div className={styles.root}>
         {arrayForSkeletons.map(() => (
@@ -25,8 +17,8 @@ export const Reviews = ({
 
   return (
     <div className={styles.root}>
-      {restaurantInfo?.reviews.map((id) => (
-        <ReviewContainer key={id} id={id} />
+      {restaurantReviews?.map((review) => (
+        <Review key={review.id} reviewInfo={review} onEdit={onEdit} />
       ))}
     </div>
   );

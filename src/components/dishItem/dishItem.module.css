@@ -11,9 +11,5 @@
     gap: 8px;
     align-items: center;
     height: 30px;
-
-    .price {
-      min-width: 30px;
-    }
   }
 }

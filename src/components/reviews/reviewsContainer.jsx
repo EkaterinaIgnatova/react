@@ -1,47 +1,79 @@
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../redux/entities/restaurants/slice";
 import { Reviews } from "./reviews";
-import { useRequest } from "../redux/hooks/useRequest";
-import { getReviews } from "../redux/entities/reviews/getReviews";
-import { getUsers } from "../redux/entities/users/getUsers";
-import { REQUEST_STATUS_REJECTED } from "../redux/constants";
+import {
+  useAddReviewMutation,
+  useEditReviewMutation,
+  useGetReviewsByRestaurantIdQuery,
+  useGetUsersQuery,
+} from "../redux/services/api";
 import { ReviewForm } from "../reviewForm/reviewForm";
 import styles from "./reviews.module.css";
+import React, { useRef, useState } from "react";
 
 export const ReviewsContainer = ({ id }) => {
-  const restaurantInfo = useSelector((state) =>
-    selectRestaurantById(state, id)
-  );
+  const {
+    data: reviewsData,
+    isLoading: isReviewsLoading,
+    isError: isReviewsError,
+  } = useGetReviewsByRestaurantIdQuery(id);
+  const { isLoading: isUsersLoading, isError: isUsersError } =
+    useGetUsersQuery();
 
-  const reviewsRequestStatus = useRequest(getReviews, id);
-  const usersRequestStatus = useRequest(getUsers);
+  const isLoading = isReviewsLoading || isUsersLoading;
+  const isError = isUsersError || isReviewsError;
 
-  if (
-    reviewsRequestStatus === REQUEST_STATUS_REJECTED ||
-    usersRequestStatus === REQUEST_STATUS_REJECTED
-  ) {
-    return (
-      <div className={styles.container}>
-        <div>
-          <h3>Reviews</h3>
-          <p>No reviews</p>
-        </div>
-        <ReviewForm className={styles.form} />
+  const [addReview, { isLoading: isAddReviewLoading }] = useAddReviewMutation();
+  const [editReview, { isLoading: isEditReviewLoading }] =
+    useEditReviewMutation();
+
+  const sendReview = (review) => {
+    reviewToEdit
+      ? editReview({ id: review.id, review })
+      : addReview({ restaurantId: id, review });
+    setReviewToEdit(null);
+  };
+
+  if (isError) {
+    <div className={styles.container}>
+      <div>
+        <h3>Reviews</h3>
+        <p>No reviews</p>
       </div>
-    );
+      <ReviewForm
+        ref={formRef}
+        review={reviewToEdit}
+        className={styles.form}
+        onSubmit={sendReview}
+        isLoading={isAddReviewLoading || isEditReviewLoading}
+      />
+    </div>;
   }
+
+  const [reviewToEdit, setReviewToEdit] = useState();
+
+  const startEditReview = (review) => {
+    formRef.current.scrollIntoView();
+    setReviewToEdit(review);
+  };
+
+  const formRef = useRef();
 
   return (
     <div className={styles.container}>
       <div>
         <h3>Reviews</h3>
         <Reviews
-          restaurantInfo={restaurantInfo}
-          reviewsRequestStatus={reviewsRequestStatus}
-          usersRequestStatus={usersRequestStatus}
+          restaurantReviews={reviewsData}
+          isLoading={isLoading}
+          onEdit={startEditReview}
         />
       </div>
-      <ReviewForm className={styles.form} />
+      <ReviewForm
+        ref={formRef}
+        review={reviewToEdit}
+        className={styles.form}
+        onSubmit={sendReview}
+        isLoading={isAddReviewLoading || isEditReviewLoading}
+      />
     </div>
   );
 };

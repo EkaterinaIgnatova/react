@@ -1,17 +1,16 @@
 import Skeleton from "react-loading-skeleton";
 import { Rating } from "../rating/rating";
 import styles from "./review.module.css";
+import { UserContainer } from "../user/userContainer";
 
 export const ReviewSkeleton = () => {
   return (
     <div className={styles.root}>
-      <h4>
-        <Skeleton />
-      </h4>
+      <UserContainer />
       <Rating currentRating={0} />
-      <p>
+      <div className={styles.skeletonWrapper}>
         <Skeleton />
-      </p>
+      </div>
     </div>
   );
 };

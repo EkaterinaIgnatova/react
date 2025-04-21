@@ -1,12 +1,11 @@
 import Skeleton from "react-loading-skeleton";
 import { DishCounter } from "../dishCounter/dishCounter";
 import styles from "./dish.module.css";
-import { REQUEST_STATUS_PENDING } from "../redux/constants";
 
-export const Dish = ({ dishInfo, id, requestStatus }) => {
+export const Dish = ({ dishInfo, id, isLoading }) => {
   const arrayForSkeletons = new Array(3).fill(null);
 
-  if (requestStatus === REQUEST_STATUS_PENDING) {
+  if (isLoading) {
     return (
       <div>
         <h2 className={styles.title}>
@@ -25,10 +24,14 @@ export const Dish = ({ dishInfo, id, requestStatus }) => {
           </div>
           <div className={styles.price}>
             <h3>Price</h3>
-            <div className={styles.counter}>
-              <DishCounter id={id} />
-              <b>{dishInfo ? dishInfo.price + "$" : <Skeleton width={30} />}</b>
-            </div>
+            {dishInfo ? (
+              <div className={styles.counter}>
+                <DishCounter id={id} />
+                <b>{dishInfo.price + "$"}</b>
+              </div>
+            ) : (
+              <Skeleton width={100} height={30} />
+            )}
           </div>
         </div>
       </div>
@@ -51,10 +54,14 @@ export const Dish = ({ dishInfo, id, requestStatus }) => {
         </div>
         <div className={styles.price}>
           <h3>Price</h3>
-          <div className={styles.counter}>
-            <DishCounter id={id} />
-            <b>{dishInfo ? dishInfo.price + "$" : <Skeleton width={30} />}</b>
-          </div>
+          {dishInfo ? (
+            <div className={styles.counter}>
+              <DishCounter id={id} />
+              <b>{dishInfo.price + "$"}</b>
+            </div>
+          ) : (
+            <Skeleton width={100} height={30} />
+          )}
         </div>
       </div>
     </div>

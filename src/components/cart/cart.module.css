@@ -1,10 +1,3 @@
 .title {
   text-align: center;
 }
-
-.total {
-  padding: 8px 0;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-}

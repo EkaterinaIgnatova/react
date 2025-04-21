@@ -13,7 +13,7 @@ export const Restaurant = ({ restaurantInfo }) => {
         <Tab path={"menu"} text={"Menu"} />
         <Tab path={"reviews"} text={"Reviews"} />
       </div>
-      <Outlet />
+      <Outlet context={[restaurantInfo]} />
     </div>
   );
 };
