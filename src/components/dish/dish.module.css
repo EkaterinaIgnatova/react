@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.skeletonWrapper {
+  padding: 8px 0;
+}
+
 .dishInfo {
   display: flex;
   flex-direction: column;
@@ -10,6 +14,8 @@
   .ingredient {
     padding: 8px;
     border-bottom: 1px solid #cfcfcf;
+    height: 30px;
+    line-height: 30px;
   }
 
   .price {

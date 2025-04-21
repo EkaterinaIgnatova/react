@@ -3,9 +3,12 @@ import { Button } from "../button/button";
 import { AuthContext } from "../authContext/authContext";
 
 export const ToggleAuth = () => {
-  const { user, toggleAuth } = use(AuthContext);
+  const { auth, toggleAuth } = use(AuthContext);
 
   return (
-    <Button label={user ? "Logout" : "Login"} onClick={toggleAuth}></Button>
+    <Button
+      label={auth.isUserAuth ? "Logout" : "Login"}
+      onClick={toggleAuth}
+    ></Button>
   );
 };

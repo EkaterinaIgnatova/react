@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { restaurantSlice } from "./entities/restaurant/slice";
-import { dishSlice } from "./entities/dish/slice";
-import { reviewSlice } from "./entities/review/slice";
-import { userSlice } from "./entities/user/slice";
+import { restaurantSlice } from "./entities/restaurants/slice";
+import { dishSlice } from "./entities/dishes/slice";
+import { reviewSlice } from "./entities/reviews/slice";
+import { userSlice } from "./entities/users/slice";
 import { cartSlice } from "./entities/cart/slice";
+import { requestSlice } from "./entities/request/slice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     [reviewSlice.name]: reviewSlice.reducer,
     [userSlice.name]: userSlice.reducer,
     [cartSlice.name]: cartSlice.reducer,
+    [requestSlice.name]: requestSlice.reducer,
   },
 });
